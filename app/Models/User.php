@@ -112,10 +112,7 @@ class User extends Authenticatable
         'email' => 'email|unique:users',
         'name' => 'max:20',
     ];
-
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
-    }
+    
 
     public function beRole($name)
     {
