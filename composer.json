@@ -7,12 +7,32 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "5.4.*",
+        "barryvdh/laravel-debugbar": "^2.2",
+        "laracasts/flash": "~2.0",
+        "InfyOmLabs/laravel-generator": "dev-master",
+        "infyomlabs/flatlab-templates": "dev-master",
+        "zizaco/entrust": "^1.7",
+        "infyomlabs/swagger-generator": "dev-master",
+        "maatwebsite/excel": "^2.1",
+        "toplan/laravel-sms": "2.6.*",
+        "doctrine/dbal": "^2.5",
+        "guzzlehttp/guzzle": "~6.0",
+        "naux/sendcloud": "1.1.*",
+        "overtrue/laravel-ueditor": "~1.0",
+        "overtrue/laravel-filesystem-qiniu": "^0.0.1",
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~5.7",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*",
+        "phpspec/phpspec": "~2.1",
+        "codeception/codeception": "dev-master",
+        "laracasts/generators": "^1.1",
+        "barryvdh/laravel-ide-helper": "2.2.3"
     },
     "autoload": {
         "classmap": [
@@ -40,6 +60,8 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },
@@ -47,5 +69,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

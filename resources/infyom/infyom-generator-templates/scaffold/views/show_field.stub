@@ -1,0 +1,6 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="col-md-6">
+	<section class="panel">
+		<div class="panel-body">$FIELD_NAME_TITLE$:{!! $$MODEL_NAME_CAMEL$->$FIELD_NAME$ !!}</div>
+	</section>
+</div>
