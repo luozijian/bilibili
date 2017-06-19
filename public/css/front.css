@@ -1,0 +1,323 @@
+html {
+    background-color: #f7f9fb; }
+
+body {
+    margin: 0; }
+
+a {
+  text-decoration: none; }
+
+.personal-performance {
+    background-color: #ffffff;
+    height: 100%; }
+.personal-performance .personal-performance-head {
+    width: 100%;
+    height: 115px; }
+.personal-performance .personal-performance-head .personal-performance-tip {
+    width: 39%;
+    position: relative;
+    left: 20px;
+    top: 28px;
+    display: inline-block;
+    height: 100%; }
+.personal-performance .personal-performance-head .personal-performance-tip .personal-performance-title {
+    font-size: 1.5em;
+    color: #4a6072; }
+.personal-performance .personal-performance-head .personal-performance-tip .personal-performance-date {
+    color: #b6c6d3; }
+.personal-performance .personal-performance-head .personal-performance-tip .personal-performance-date img {
+    height: 14px;
+    margin-right: 5px; }
+.personal-performance .personal-performance-head .personal-performance-money {
+    width: 59%;
+    font-size: 3em;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    color: #4a6072;
+    height: 50px;
+    display: inline-block;
+    font-weight: 500; }
+.personal-performance .personal-performance-line {
+    width: 100%;
+    height: 11px;
+    background-color: #f7f9fb; }
+.personal-performance .personal-performance-record {
+    min-height: 500px;
+    background-color: #ffffff;
+    width: 100%; }
+.personal-performance .personal-performance-record .personal-performance-record-head {
+    padding: 17px; }
+.personal-performance .personal-performance-record .personal-performance-record-head .personal-performance-record-name {
+    width: 55%;
+    font-size: 1.5em;
+    color: #4a6072;
+    display: inline-block;
+    vertical-align: top; }
+.personal-performance .personal-performance-record .personal-performance-record-head .personal-performance-record-change {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid #cdd5dd;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 0.8em;
+    position: relative;
+    left: 45px;
+    color: #4a6072;
+    height: 28px;
+    line-height: 28px;
+    vertical-align: top; }
+.personal-performance .personal-performance-record .personal-performance-record-head .personal-performance-record-change img {
+    padding-right: 10px; }
+.personal-performance .personal-performance-record .personal-performance-record-table {
+    padding: 3px; }
+.personal-performance .personal-performance-record .personal-performance-record-table table {
+    font-size: 0.8em;
+    width: 100%;
+    text-align: left;
+    color: #4a6072; }
+.personal-performance .personal-performance-record .personal-performance-record-table table tr {
+    height: 32px; }
+.personal-performance .personal-performance-record .personal-performance-record-table table th {
+    color: #b6c6d3; }
+.personal-performance .personal-performance-record .personal-performance-record-table table .table-user-name {
+    padding-right: 32px; }
+.personal-performance .personal-performance-record .personal-performance-record-table table .icon-call {
+    position: relative;
+    top: 2px;
+    left: 5px; }
+.personal-performance .personal-performance-record .personal-performance-record-table table .user-info-detail {
+    background-color: #fafcfe;
+    display: none;
+    height: auto; }
+.personal-performance .personal-performance-record .personal-performance-record-table table .user-info-detail td {
+    vertical-align: top; }
+
+.team-performance {
+    background-color: #ffffff;
+    height: 100%; }
+.team-performance .team-performance-head {
+    width: 100%;
+    height: 115px; }
+.team-performance .team-performance-head .team-performance-tip {
+    width: 39%;
+    position: relative;
+    left: 20px;
+    top: 28px;
+    height: 100%;
+    display: inline-block; }
+.team-performance .team-performance-head .team-performance-tip .team-performance-title {
+    font-size: 1.5em;
+    color: #4a6072; }
+.team-performance .team-performance-head .team-performance-tip .team-performance-date {
+    color: #b6c6d3; }
+.team-performance .team-performance-head .team-performance-tip .team-performance-date img {
+    height: 14px; }
+.team-performance .team-performance-head .team-performance-money {
+    width: 59%;
+    font-size: 3em;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    color: #4a6072;
+    height: 50px;
+    display: inline-block;
+    font-weight: 500; }
+.team-performance .team-performance-line {
+    width: 100%;
+    height: 4px;
+    background-color: #f7f9fb; }
+.team-performance .select-team-member {
+    width: 100%;
+    height: 48px; }
+.team-performance .select-team-member .select-team-title {
+    width: 30%;
+    float: left;
+    font-size: 1em;
+    color: #4a6072;
+    line-height: 48px;
+    padding-left: 17px; }
+.team-performance .select-team-member .team-member-list {
+    width: 136px;
+    height: 24px;
+    float: left;
+    background-color: #edf5fe;
+    margin-top: 12px; }
+.team-performance .select-team-member .team-member-list select {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    color: #b6c6d3; }
+.team-performance .select-team-member .check-performance {
+    border: 1px solid #b6c6d3;
+    width: 76px;
+    float: left;
+    height: 22px;
+    margin-top: 12px;
+    margin-left: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 22px;
+    color: #4a6072; }
+.team-performance .team-performance-record {
+    min-height: 500px;
+    background-color: #ffffff;
+    width: 100%; }
+.team-performance .team-performance-record .team-performance-record-head {
+    padding: 17px 17px 0px; }
+.team-performance .team-performance-record .team-performance-record-head .team-performance-record-name {
+    width: 60%;
+    font-size: 1.4em;
+    color: #4a6072;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: top; }
+.team-performance .team-performance-record .team-performance-record-head .team-performance-record-name span {
+    font-size: 0.8em; }
+.team-performance .team-performance-record .team-performance-record-head .team-performance-record-change {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid #cdd5dd;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 0.8em;
+    position: relative;
+    left: 30px;
+    color: #4a6072;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: top; }
+.team-performance .team-performance-record .team-performance-record-head .team-performance-record-change img {
+    padding-right: 10px; }
+.team-performance .team-performance-record .team-performance-record-table {
+    padding: 3px; }
+.team-performance .team-performance-record .team-performance-record-table table {
+    font-size: 0.8em;
+    width: 100%;
+    text-align: left;
+    color: #4a6072; }
+.team-performance .team-performance-record .team-performance-record-table table tr {
+    height: 32px; }
+.team-performance .team-performance-record .team-performance-record-table table th {
+    color: #b6c6d3; }
+.team-performance .team-performance-record .team-performance-record-table table .table-user-name {
+    padding-right: 32px; }
+.team-performance .team-performance-record .team-performance-record-table table .icon-call {
+    position: relative;
+    top: 2px;
+    left: 5px; }
+.team-performance .team-performance-record .team-performance-record-table table .user-info-detail {
+    background-color: #fafcfe;
+    display: none;
+    height: auto; }
+.team-performance .team-performance-record .team-performance-record-table table .user-info-detail td {
+    vertical-align: top; }
+
+.employee-center {
+    height: 100%; }
+.employee-center .employee-center-head {
+    width: 100%;
+    height: 108px;
+    background-color: #ffffff;
+    padding-top: 22px; }
+.employee-center .employee-center-head .employee-center-title {
+    width: 60%;
+    display: inline-block;
+    padding-left: 22px;
+    vertical-align: top; }
+.employee-center .employee-center-head .employee-center-title .employee-center-name {
+    font-size: 1.5em;
+    font-weight: 600; }
+.employee-center .employee-center-head .employee-center-title .employee-center-number {
+    font-size: 1.2em;
+    color: #cad3db; }
+.employee-center .employee-center-head .employee-center-level {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center; }
+.employee-center .employee-center-head .employee-center-level .level-number {
+    font-size: 2em;
+    font-weight: 600; }
+.employee-center .employee-center-head .employee-center-level .level-name {
+    font-size: 1.2em;
+    color: #cad3db; }
+.employee-center .employee-level-info {
+    height: 160px;
+    margin: 9px;
+    background-color: #ffffff; }
+.employee-center .employee-level-info .level-change {
+    font-size: 1.375em;
+    margin-left: 10px; }
+.employee-center .employee-level-info .level-change img {
+    width: 14px; }
+.employee-center .employee-level-info .level-condition {
+    color: #cad3db;
+    margin-left: 10px; }
+.employee-center .employee-level-info .level-tip {
+    margin-left: 10px;
+    margin-top: 7px;
+    margin-bottom: 4px; }
+.employee-center .employee-level-info .level-tip span {
+    color: #41c68c; }
+.employee-center .employee-level-info progress {
+    width: 92%;
+    margin: 0px 12px;
+    background-color: #e3eef8; }
+.employee-center .employee-level-info progress::-moz-progress-bar {
+    background: #41c68c; }
+.employee-center .employee-level-info progress::-webkit-progress-bar {
+    background: #e3eef8; }
+.employee-center .employee-level-info progress::-webkit-progress-value {
+    background: #41c68c; }
+.employee-center .employee-personal-performance {
+    height: 104px;
+    margin: 9px;
+    background-color: #ffffff; }
+.employee-center .employee-personal-performance .personal-performance-title {
+    color: #a167d8;
+    font-size: 1em;
+    padding: 10px 10px 0px; }
+.employee-center .employee-personal-performance .personal-performance-money {
+    font-size: 2.5em;
+    text-align: center;
+    color: #4a6072; }
+.employee-center .employee-personal-performance span {
+    float: right;
+    position: relative;
+    bottom: 35px;
+    right: 12px; }
+.employee-center .employee-team-performance {
+    height: 105px;
+    margin: 9px;
+    background-color: #ffffff; }
+.employee-center .employee-team-performance .team-performance-title {
+    color: #ee8037;
+    font-size: 1em;
+    padding: 10px 10px 0px; }
+.employee-center .employee-team-performance .team-performance-money {
+    font-size: 2.5em;
+    text-align: center;
+    color: #4a6072; }
+.employee-center .employee-team-performance span {
+    float: right;
+    position: relative;
+    bottom: 35px;
+    right: 12px; }
+.employee-center .employee-product {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #3fa2f4;
+    position: fixed;
+    bottom: 0px;
+    background-color: #ffffff;
+    line-height: 50px; }
+.employee-center .employee-product img {
+    width: 18px;
+    position: relative;
+    top: 2px;
+    right: 5px; }
+
+/*# sourceMappingURL=style.css.map */

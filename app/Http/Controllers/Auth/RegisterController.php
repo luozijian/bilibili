@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Services\MailService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Laracasts\Flash\Flash;
 
 class RegisterController extends Controller
 {
@@ -62,10 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        \DB::beginTransaction();
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'confirmation_token' => str_random(40),
             'password' => bcrypt($data['password']),
         ]);
+
+        $mail = new MailService();
+        $mail->verify($user);
+
+        \DB::commit();
+
+        Flash::success('注册成功，验证邮件以发送，请登陆您的邮箱查看');
+
+        return $user;
     }
 }

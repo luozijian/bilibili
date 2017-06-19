@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class LoginController extends Controller
 {
@@ -56,7 +57,7 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
-            flash('欢迎回来！','success');
+            Flash::success('登陆成功');
             return $this->sendLoginResponse($request);
         }
 
@@ -74,7 +75,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $credentials = $this->credentials($request);
+        $credentials = array_merge($this->credentials($request), ['is_active' => 1]);
         return $this->guard()->attempt(
             $credentials, $request->has('remember')
         );

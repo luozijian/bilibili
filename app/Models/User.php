@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\MailService;
 use App\Services\MenusService;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -88,6 +89,9 @@ class User extends Authenticatable
         'email',
         'password',
         'name',
+        'avatar',
+        'is_active',
+        'confirmation_token',
     ];
     
     protected $hidden = [
@@ -118,5 +122,16 @@ class User extends Authenticatable
     {
         $admin=Role::where("name",$name)->first();
         $this->attachRole($admin);
+    }
+
+    /**
+     * send password reset email to user's email base on token.
+     *
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $mail = new MailService();
+        $mail->passwordReset($this->email, $token);
     }
 }
