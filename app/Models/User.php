@@ -112,7 +112,7 @@ class User extends Authenticatable
         'email' => 'email|unique:users',
         'name' => 'max:20',
     ];
-    
+
 
     public function beRole($name)
     {
