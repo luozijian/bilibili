@@ -18,8 +18,9 @@ class UsersSeeder extends Seeder
                 'id' => 1,
                 'name' => 'admin',
                 'email' => '564774252@qq.com',
-                'password' => '$2y$10$t8/tXHa1lvmnRS7QIBkIJOpceqMmmlw30ggtlp7AXjR2JOWgpI53C',
-                'confirmation_token' => '8VTZUSwYoOJmNg6wc1t4wVQorp8MZ7ObKfKsDy3a'
+                'password' => '$2y$10$ulJrS6fkmLn/muVvT4FdzuB.TmjvLRL9NjAS3aF68jht1QCDmvRoO',
+                'confirmation_token' => 'uSVhA5QAg4tI0h2cWts1o1WPJ4UXFfrQURZEyxDQ',
+                'is_active' => 1
             ]
         );
     }
