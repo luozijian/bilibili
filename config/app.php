@@ -186,6 +186,7 @@ return [
         InfyOm\FlatLabTemplates\FlatLabTemplatesServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         \App\Providers\ComposerServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
 
         Naux\Mail\SendCloudServiceProvider::class,
 
