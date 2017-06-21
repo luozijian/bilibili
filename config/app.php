@@ -185,15 +185,9 @@ return [
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         InfyOm\FlatLabTemplates\FlatLabTemplatesServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
         \App\Providers\ComposerServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        Toplan\PhpSms\PhpSmsServiceProvider::class,
-        Toplan\Sms\SmsManagerServiceProvider::class,
 
         Naux\Mail\SendCloudServiceProvider::class,
-        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
-        Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
 
     ],
 
