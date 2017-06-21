@@ -3,10 +3,8 @@
 namespace App\Models;
 
 use App\Services\MailService;
-use App\Services\MenusService;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**
  * @SWG\Definition(
@@ -75,7 +73,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  */
 class User extends Authenticatable
 {
-    use Notifiable ,EntrustUserTrait;
+    use Notifiable;
 
     const CHECK_STATUS_OF_PASS=1;
     const CHECK_STATUS_OF_REFUSE=2;
