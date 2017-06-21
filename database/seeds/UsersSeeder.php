@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
@@ -20,7 +21,9 @@ class UsersSeeder extends Seeder
                 'email' => '564774252@qq.com',
                 'password' => '$2y$10$ulJrS6fkmLn/muVvT4FdzuB.TmjvLRL9NjAS3aF68jht1QCDmvRoO',
                 'confirmation_token' => 'uSVhA5QAg4tI0h2cWts1o1WPJ4UXFfrQURZEyxDQ',
-                'is_active' => 1
+                'is_active' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         );
     }

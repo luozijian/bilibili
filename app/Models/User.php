@@ -114,7 +114,7 @@ class User extends Authenticatable
         'email' => 'email|unique:users',
         'name' => 'max:20',
     ];
-    
+
 
     /**
      * send password reset email to user's email base on token.
