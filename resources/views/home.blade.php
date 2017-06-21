@@ -7,7 +7,7 @@
             position:absolute;
             background:grey;
             color: white;
-            width:92%;
+            width:95%;
             bottom:5em;
         }
     </style>
@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             @include('flash::message')
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">视频</div>
                     <div class="panel-body">
@@ -37,6 +37,33 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        弹幕发送区
+                    </div>
+                    <div class="panel-body">
+                        @if(Auth::check())
+                            {!! Form::open(['route' => 'barrages.store']) !!}
+                            <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                                {!! Form::textarea('content', null, ['class' => 'form-control','required']) !!}
+                                @if ($errors->has('content'))
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('content') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <button class="btn btn-success pull-right" type="submit">发布弹幕</button>
+                            {!! Form::close() !!}
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-success btn-block">登录发布弹幕</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
@@ -52,7 +79,6 @@
             href:'http://www.yaseng.org', //链接
             close:true, //显示关闭按钮
             speed:8, //延迟,单位秒,默认8
-            bottom:70, //距离底部高度,单位px,默认随机
             color:'#fff', //颜色,默认白色
             old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
         };

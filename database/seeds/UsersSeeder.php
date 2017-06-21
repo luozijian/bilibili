@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
     {
         \DB::table('users')->delete();
 
-        \DB::table('users')->insert(
+        \DB::table('users')->insert([
             [
                 'id' => 1,
                 'name' => 'admin',
@@ -24,7 +24,27 @@ class UsersSeeder extends Seeder
                 'is_active' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => 2,
+                'name' => '罗子健',
+                'email' => '123123@qq.com',
+                'password' => '$2y$10$ulJrS6fkmLn/muVvT4FdzuB.TmjvLRL9NjAS3aF68jht1QCDmvRoO',
+                'confirmation_token' => 'uSVhA5QAg4tI0h2cWts1o1WPJ4UXFfrQURZEyxDj',
+                'is_active' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => 3,
+                'name' => '曾志平',
+                'email' => '123321@qq.com',
+                'password' => '$2y$10$ulJrS6fkmLn/muVvT4FdzuB.TmjvLRL9NjAS3aF68jht1QCDmvRoO',
+                'confirmation_token' => 'uSVhA5QAg4tI0h2cWts1o1WPJ4UXFfrQURKEyxDQ',
+                'is_active' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
-        );
+        ]);
     }
 }

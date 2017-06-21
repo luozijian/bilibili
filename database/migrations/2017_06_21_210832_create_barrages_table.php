@@ -15,6 +15,7 @@ class CreateBarragesTable extends Migration
     {
         Schema::create('barrages', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->index()->unsigned();
             $table->text('content');
             $table->timestamps();
         });
