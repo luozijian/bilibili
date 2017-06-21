@@ -56,7 +56,21 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
+        $credentials = $this->credentials($request);
+
+        //邮箱登录
+        $credentials = ['email' => $credentials['email_or_name'], 'password' => $credentials['password']];
+
+        if ($this->guard()->attempt($credentials,$request->has('remember'))) {
+            Flash::success('登陆成功');
+            return $this->sendLoginResponse($request);
+        }
+
+
+        //账号登录
+        $credentials = ['name' => $credentials['email'], 'password' => $credentials['password']];
+
+        if ($this->guard()->attempt($credentials, $request->has('remember'))) {
             Flash::success('登陆成功');
             return $this->sendLoginResponse($request);
         }
@@ -79,5 +93,10 @@ class LoginController extends Controller
         return $this->guard()->attempt(
             $credentials, $request->has('remember')
         );
+    }
+
+    public function username()
+    {
+        return 'email_or_name';
     }
 }
