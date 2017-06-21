@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\FirstLogin;
+use App\Models\Subtitle;
 
 class HomeController extends Controller
 {
@@ -36,7 +37,10 @@ class HomeController extends Controller
             event(new FirstLogin('video/Daniel Wu - on journey-zh-en.srt','chinese'));
             event(new FirstLogin('video/Daniel Wu - on journey.srt','english'));
         }
-        
-        return view('home');
+
+        $chinese_subtitles = json_encode(Subtitle::where('type','chinese')->get());
+        $english_subtitles = addslashes(json_encode(Subtitle::where('type','english')->get()));//转义
+
+        return view('home',compact('chinese_subtitles','english_subtitles'));
     }
 }

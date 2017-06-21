@@ -39,9 +39,12 @@ class ImportSubtitle
             }
             if (strpos($subtitle,'-->')){
                 //时间
+                $subtitle = str_replace(',','.',$subtitle);//去逗号
                 $timestamp = explode('-->',$subtitle);
-                $data['started_at'] = rtrim($timestamp[0]);
-                $data['end_at'] = rtrim($timestamp[1]);
+
+                $data['started_at'] = $this->dealString($timestamp[0]);
+
+                $data['end_at'] = $this->dealString($timestamp[1]);
             }else{
                 //歌词
                 $data['content'] = rtrim($subtitle);
@@ -53,5 +56,31 @@ class ImportSubtitle
                 $data = [];
             }
         }
+
+    }
+
+    protected function dealString($str){
+        $str = rtrim($str);
+
+        $str = explode(':',$str);
+
+        foreach ($str as $key => $item){
+            if (strpos($item,'00') || $item === '00'){
+                unset($str[$key]);
+            }
+        }
+        sort($str);//重构索引
+
+        if(count($str) == 1){
+            $str = $str[0];
+        }else{
+
+            $str[0] = str_replace('0','',$str[0]);//去0
+
+            $str = $str[0] * 60 + $str[1];
+
+        }
+
+        return $str;
     }
 }

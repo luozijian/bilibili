@@ -6,8 +6,8 @@
             position:absolute;
             background:grey;
             color: white;
-            bottom:5em;
             width:92%;
+            bottom:5em;
         }
     </style>
 
@@ -30,7 +30,9 @@
                                 <a href="http://videojs.com/html5-video-support/" target="_blank">支持 HTML5</a>
                             </p>
                         </video>
-                        <div class="subtitle">subtitle</div>
+                        <div class="subtitle">
+                            subtitle
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,14 +44,43 @@
     @parent
     <script>
         $(function(){
+            let chinese_subtitles = '{!! $chinese_subtitles !!}';
+            let english_subtitles = '{!! $english_subtitles !!}';
 
-            console.log('hello');
-            var $video = $('#my-video');
-            var video = $video[0];
-            var $subtitle = $('.subtitle');
-            $video.bind('timeupdate',function(e){
-                $subtitle.text(video.currentTime);
+            chinese_subtitles = JSON.parse(chinese_subtitles);
+            english_subtitles = JSON.parse(english_subtitles);
+
+            const $video = $('#my-video');
+
+            const video = $video[0];
+
+            const $subtitle = $('.subtitle');
+
+            $video.bind('timeupdate',function(){
+
+                let chinese_content = findChineseContent(video.currentTime);
+                let english_content = findEnglishContent(video.currentTime);
+                $subtitle.html( '<p style="text-align: center">'+ chinese_content + '<br>' + english_content +'</p>' );
+
             });
+
+            function findChineseContent(currentTime) {
+                for (let subtitle of chinese_subtitles){
+                    if(currentTime <= subtitle.end_at && currentTime >= subtitle.started_at){
+                        return subtitle.content;
+                    }
+                }
+                return currentTime;
+            }
+
+            function findEnglishContent(currentTime) {
+                for (let subtitle of english_subtitles){
+                    if(currentTime <= subtitle.end_at && currentTime >= subtitle.started_at){
+                        return subtitle.content;
+                    }
+                }
+                return '';
+            }
 
         });
     </script>
