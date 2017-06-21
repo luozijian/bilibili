@@ -10,5 +10,6 @@ class Subtitle extends Model
         'started_at',
         'end_at',
         'content',
+        'type',
     ];
 }

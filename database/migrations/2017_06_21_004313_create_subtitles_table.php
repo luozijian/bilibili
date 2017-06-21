@@ -18,6 +18,7 @@ class CreateSubtitlesTable extends Migration
             $table->string('started_at')->default('字幕开始时间');
             $table->string('end_at')->default('字幕结束时间');
             $table->string('content')->default('字幕内容');
+            $table->string('type')->comment('字幕语言');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ class ImportSubtitle
     {
         $data = [];
 
-        $subtitles = file_get_contents(asset('/video/Daniel Wu - on journey-zh-en.srt'));
+        $subtitles = file_get_contents(asset($event->file));
 
         $subtitles = explode("\n",$subtitles);
 
@@ -48,6 +48,7 @@ class ImportSubtitle
             }
 
             if ($data['started_at'] && $data['end_at'] && isset($data['content'])){
+                $data['type'] = $event->type;
                 Subtitle::create($data);
                 $data = [];
             }
