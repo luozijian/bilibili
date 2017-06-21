@@ -114,13 +114,7 @@ class User extends Authenticatable
         'email' => 'email|unique:users',
         'name' => 'max:20',
     ];
-
-
-    public function beRole($name)
-    {
-        $admin=Role::where("name",$name)->first();
-        $this->attachRole($admin);
-    }
+    
 
     /**
      * send password reset email to user's email base on token.
