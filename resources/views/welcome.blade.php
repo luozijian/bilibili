@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Bilibil</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -83,9 +83,13 @@
                 </div>
 
                 <div class="links">
-                    罗子健 2014122107
                     <a href="https://github.com/luozijian/bilibili">GitHub</a>
+                    <a href="{{ route('home') }}">一次性查询弹幕</a>
+                    <a href="https://github.com/luozijian/bilibili">轮询法</a>
+                    <a href="https://github.com/luozijian/bilibili">WebSocket</a>
                 </div>
+
+
             </div>
         </div>
     </body>
