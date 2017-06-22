@@ -21,7 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('email/verify/{token}','EmailController@verify')->name('email.verify');
 
+Route::get('barrages/polling','BarrageController@polling')->name('barrages.polling');
+Route::get('barrages/socket','BarrageController@socket')->name('barrages.socket');
 Route::resource('barrages','BarrageController');
 
 
-Route::resource('barrages', 'BarrageController');

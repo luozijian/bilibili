@@ -118,7 +118,7 @@
             for (let barrage of barrages){
                 $('body').barrager(barrage);
             }
-            
+
         });
 
         function store(){

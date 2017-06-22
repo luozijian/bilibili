@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Requests\CreateBarrageRequest;
 use App\Http\Requests\UpdateBarrageRequest;
+use App\Models\Subtitle;
 use App\Repositories\BarrageRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
+use App\Services\FirstLoginService;
 use Illuminate\Http\Request;
 use Flash;
 use App\Criteria\RequestCriteria;
@@ -156,5 +157,27 @@ class BarrageController extends InfyOmBaseController
         Flash::success('删除成功');
 
         return redirect(session('barrage_back_url',route('barrages.index')));
+    }
+
+    public function polling()
+    {
+        $service = new FirstLoginService();
+        $service->firstLogin();
+
+        $chinese_subtitles = json_encode(Subtitle::where('type','chinese')->get());
+        $english_subtitles = addslashes(json_encode(Subtitle::where('type','english')->get()));//转义
+
+        return view('barrages.polling',compact('chinese_subtitles','english_subtitles'));
+    }
+
+    public function socket()
+    {
+        $service = new FirstLoginService();
+        $service->firstLogin();
+
+        $chinese_subtitles = json_encode(Subtitle::where('type','chinese')->get());
+        $english_subtitles = addslashes(json_encode(Subtitle::where('type','english')->get()));//转义
+
+        return view('barrages.socket',compact('chinese_subtitles','english_subtitles'));
     }
 }

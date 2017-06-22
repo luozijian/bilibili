@@ -85,8 +85,8 @@
                 <div class="links">
                     <a href="https://github.com/luozijian/bilibili">GitHub</a>
                     <a href="{{ route('home') }}">一次性查询弹幕</a>
-                    <a href="https://github.com/luozijian/bilibili">轮询法</a>
-                    <a href="https://github.com/luozijian/bilibili">WebSocket</a>
+                    <a href="{{ route('barrages.polling') }}">轮询法</a>
+                    <a href="{{ route('barrages.socket') }}">WebSocket</a>
                 </div>
 
 
