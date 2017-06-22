@@ -11,4 +11,10 @@ class Barrage extends Model
     public static $rules = [
         'content' => 'required',
     ];
+
+    /****  relationship ****/
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

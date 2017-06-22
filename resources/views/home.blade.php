@@ -112,8 +112,13 @@
                 return '';
             }
 
-
-
+            //弹幕
+            let barrages = '{!! $barrages !!}';
+            barrages = JSON.parse(barrages);
+            for (let barrage of barrages){
+                $('body').barrager(barrage);
+            }
+            
         });
 
         function store(){

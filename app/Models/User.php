@@ -127,4 +127,10 @@ class User extends Authenticatable
         $mail = new MailService();
         $mail->passwordReset($this->email, $token);
     }
+
+    /****  relationship ****/
+    public function barrages()
+    {
+        return $this->hasMany(Barrage::class);
+    }
 }
