@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barrage extends Model
 {
-    protected $fillable = ['content'];
+    protected $fillable = ['user_id','content'];
+
+    public static $rules = [
+        'content' => 'required',
+    ];
 }

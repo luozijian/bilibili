@@ -46,7 +46,6 @@
                     </div>
                     <div class="panel-body">
                         @if(Auth::check())
-                            {!! Form::open(['route' => 'barrages.store']) !!}
                             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                                 {!! Form::textarea('content', null, ['class' => 'form-control','required']) !!}
                                 @if ($errors->has('content'))
@@ -55,8 +54,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <button class="btn btn-success pull-right" type="submit">发布弹幕</button>
-                            {!! Form::close() !!}
+                            <button class="btn btn-success pull-right" type="submit" onclick="store()">发布弹幕</button>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-success btn-block">登录发布弹幕</a>
                         @endif
@@ -73,16 +71,7 @@
     <script type="text/javascript" src="/js/jquery.barrager.js"></script>
 
     <script>
-        const item={
-            img:'/img/heisenberg.png', //图片
-            info:'弹幕文字信息', //文字
-            href:'http://www.yaseng.org', //链接
-            close:true, //显示关闭按钮
-            speed:8, //延迟,单位秒,默认8
-            color:'#fff', //颜色,默认白色
-            old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
-        };
-        $('body').barrager(item);
+
 
         $(function(){
             let chinese_subtitles = '{!! $chinese_subtitles !!}';
@@ -123,7 +112,42 @@
                 return '';
             }
 
+
+
         });
+
+        function store(){
+            let content = $('[name="content"]').val();
+            let user_id = '{{ Auth::id() }}';
+            $.ajax({
+                type: "POST",
+                url: "/api/barrages",
+                data: "content="+content+"&user_id="+user_id,
+                success: function(data){
+                    if (data.success){
+                        alert('发送成功');
+                        $('[name="content"]').val('');
+                        sendDanmu(data.data);
+                    }
+                },
+                error : function() {
+                   alert('字幕内容不能为空');
+                },
+            });
+        }
+
+        function sendDanmu(data) {
+            const item={
+                img:data.user_avatar, //图片
+                info:data.content, //文字
+                href:'http://www.yaseng.org', //链接
+                close:true, //显示关闭按钮
+                speed:8, //延迟,单位秒,默认8
+                color:'#fff', //颜色,默认白色
+                old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            };
+            $('body').barrager(item);
+        }
     </script>
 
 @endsection
