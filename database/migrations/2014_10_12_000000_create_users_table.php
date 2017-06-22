@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('/img/default_avator.jpg');
             $table->string('confirmation_token')->default('');
             $table->smallInteger('is_active')->default(0);
+            $table->string('api_token')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
+use App\Models\Barrage;
 
-class CreateBarrageRequest extends FormRequest
+class CreateBarrageRequest extends Request
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,8 +25,6 @@ class CreateBarrageRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'content' => 'required'
-        ];
+        return Barrage::$rules;
     }
 }

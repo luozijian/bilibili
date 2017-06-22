@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateBarrageAPIRequest;
 use App\Http\Requests\API\UpdateBarrageAPIRequest;
 use App\Models\Barrage;
+use App\Models\User;
 use App\Repositories\BarrageRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
@@ -112,6 +113,7 @@ class BarrageAPIController extends InfyOmBaseController
         $input = $request->all();
 
         $barrages = $this->barrageRepository->create($input);
+        $barrages['user_avatar'] = User::find($input['user_id'])->avatar;
 
         return $this->sendResponse($barrages->toArray(), 'Barrage saved successfully');
     }

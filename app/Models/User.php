@@ -90,6 +90,7 @@ class User extends Authenticatable
         'avatar',
         'is_active',
         'confirmation_token',
+        'api_token',
     ];
     
     protected $hidden = [
