@@ -71,9 +71,10 @@
     <script type="text/javascript" src="/js/jquery.barrager.js"></script>
 
     <script>
-
+        setInterval("getBarrages()",5000);
 
         $(function(){
+
             let chinese_subtitles = '{!! $chinese_subtitles !!}';
             let english_subtitles = '{!! $english_subtitles !!}';
 
@@ -112,13 +113,6 @@
                 return '';
             }
 
-            //弹幕
-            let barrages = '{!! $barrages !!}';
-            barrages = JSON.parse(barrages);
-            for (let barrage of barrages){
-                $('body').barrager(barrage);
-            }
-
         });
 
         function store(){
@@ -152,6 +146,24 @@
                 old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
             };
             $('body').barrager(item);
+        }
+
+        function getBarrages(){
+            $.ajax({
+                type: "GET",
+                url: "/api/barrages",
+                success: function(data){
+                    if (data.success){
+                        let barrages = data.data;
+                        for (let barrage of barrages){
+                            $('body').barrager(barrage);
+                        }
+                    }
+                },
+                error : function() {
+                    console.log('error');
+                },
+            });
         }
     </script>
 

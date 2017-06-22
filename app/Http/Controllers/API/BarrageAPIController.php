@@ -65,9 +65,19 @@ class BarrageAPIController extends InfyOmBaseController
     {
         $this->barrageRepository->pushCriteria(new RequestCriteria($request));
         $this->barrageRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $barrages = $this->barrageRepository->all();
+        $res = $this->barrageRepository->all();
 
-        return $this->sendResponse($barrages->toArray(), 'Barrages retrieved successfully');
+        $barrages = [];
+        foreach ($res as $key => $item){
+            $barrages[$key]['img'] = $item->user->avatar;
+            $barrages[$key]['info'] = $item->content;
+            $barrages[$key]['href'] = 'http://www.yaseng.org';
+            $barrages[$key]['speed'] = random_int(5,8);
+            $barrages[$key]['color'] = '#fff';
+            $barrages[$key]['old_ie_color'] = '#000000';
+        }
+
+        return $this->sendResponse($barrages, 'Barrages retrieved successfully');
     }
 
     /**
