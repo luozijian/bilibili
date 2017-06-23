@@ -4,7 +4,7 @@ namespace Laravoole;
 return [
     // for laravoole itself
     'base_config' => [
-        'host' => env('LARAVOOLE_HOST', '192.168.10.10'),
+        'host' => env('LARAVOOLE_HOST', '0.0.0.0'),
         'port' => env('LARAVOOLE_PORT', 9050),
 
         // this file storages the pid of laravoole

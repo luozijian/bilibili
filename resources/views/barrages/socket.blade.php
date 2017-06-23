@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="SendData()">test</button>
+            <button onclick="sendData()">test</button>
             <div id="log"></div>
         </div>
     </div>
@@ -73,9 +73,9 @@
 
     <script>
 
-
-
         $(function(){
+            initSocket();
+
             let chinese_subtitles = '{!! $chinese_subtitles !!}';
             let english_subtitles = '{!! $english_subtitles !!}';
 
@@ -114,12 +114,12 @@
                 return '';
             }
 
-            {{--//弹幕--}}
-            {{--let barrages = '{!! $barrages !!}';--}}
-            {{--barrages = JSON.parse(barrages);--}}
-            {{--for (let barrage of barrages){--}}
-                {{--$('body').barrager(barrage);--}}
-            {{--}--}}
+            //弹幕
+            let barrages = '{!! $barrages !!}';
+            barrages = JSON.parse(barrages);
+            for (let barrage of barrages){
+                $('body').barrager(barrage);
+            }
 
         });
 
@@ -158,60 +158,27 @@
 
 
 
-        function SendData() {
-            var host = "ws://localhost:2000/websocket/server.php";
+        //初始化的其他方法
+        function log(msg) {
+            $("log").innerHTML+="<br>"+msg;
+        }
+
+        function initSocket() {
+            //初始化socket
+            let host = "ws://bilibili.dev:4000";
             try{
                 socket = new WebSocket(host);
                 log('WebSocket - status '+socket.readyState);
                 socket.onopen    = function(msg){ log("Welcome - status "+this.readyState); };
-                socket.onmessage = function(msg){ log("Received: "+msg.data); };
+                socket.onmessage = function(msg){ alert("Received: "+msg.data); };
                 socket.onclose   = function(msg){ log("Disconnected - status "+this.readyState); };
             } catch(ex) {
                 log(ex);
             }
-            console.log('send!');
-            {{--let user_id = '{{ Auth::id() }}';--}}
-
-            {{--try{--}}
-
-                {{--if(user_id){--}}
-                    {{--ws.send(user_id);--}}
-                {{--}--}}
-            {{--}   catch(ex){--}}
-                {{--alert(ex.message);--}}
-            {{--}--}}
         }
 
-        function seestate(){
-            alert(ws.readyState);
-        }
-
-
-        /**
-         * send方法发送消息到服务器端
-         */
-        function send(){
-            var msg = $("msg").value;
-            if (!msg) return false;
-
-            $("msg").value="";
-            try{
-                socket.send(msg);
-                log('Sent: '+msg);
-            } catch(ex) {
-                log(ex);
-            }
-        }
-
-        //初始化的其他方法
-        function $(id) {
-            return document.getElementById(id);
-        }
-        function log(msg) {
-            $("log").innerHTML+="<br>"+msg;
-        }
-        function onkey(event){
-            if (event.keyCode == 13) send();
+        function sendData(){
+            socket.send('123123');
         }
 
     </script>

@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Workerman\Worker;
-use App;
+require_once base_path('vendor/workerman/workerman/Autoloader.php');
 
 class StartSocketServer extends Command
 {
@@ -13,7 +13,8 @@ class StartSocketServer extends Command
      *
      * @var string
      */
-    protected $signature = 'workerman:httpserver {action} {--daemonize}';
+//    protected $signature = 'workerman:httpserver {action} {--daemonize}';
+    protected $signature = 'socket:start';
 
     /**
      * The console command description.
@@ -34,22 +35,7 @@ class StartSocketServer extends Command
 
     public function handle()
     {
-        //因为workerman需要带参数 所以得强制修改
-        global $argv;
-        $action=$this->argument('action');
-        if(!in_array($action,['start','stop'])){
-            $this->error('Error Arguments');
-            exit;
-        }
-        $argv[0]='workerman:httpserver';
-        $argv[1]=$action;
-        $argv[2]=$this->option('daemonize')?'-d':'';
-        $this->httpserver=new Worker('http://0.0.0.0:8080');
-        // App::instance('workerman:httpserver',$this->httpserver);
-        $this->httpserver->onMessage=function($connection,$data){
-            $connection->send('laravel workerman hello world');
-        };
-        Worker::runAll();
+//        new App\Services\WebSocketService('192.168.10.10',4000);
     }
 
 }
