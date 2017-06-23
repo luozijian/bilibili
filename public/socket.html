@@ -12,7 +12,7 @@
         var socket;
 
         function init(){
-            var host = "ws://bilibili.dev:9050";
+            var host = "ws://127.0.0.1:9050/websocket";
             var protocols = ['jsonrpc'];
             try{
                 socket = new WebSocket(host,protocols);
