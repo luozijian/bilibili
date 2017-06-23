@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-06-21.
+    * Generated on 2017-06-23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -59,6 +59,8 @@ namespace PHPSTORM_META {
             'infyom.scaffold.requests' instanceof \InfyOm\Generator\Commands\Scaffold\RequestsGeneratorCommand,
             'infyom.scaffold.views' instanceof \InfyOm\Generator\Commands\Scaffold\ViewsGeneratorCommand,
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
+            'iseed' instanceof \Orangehill\Iseed\Iseed,
+            'command.iseed' instanceof \Orangehill\Iseed\IseedCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -201,6 +203,8 @@ namespace PHPSTORM_META {
             'infyom.scaffold.requests' instanceof \InfyOm\Generator\Commands\Scaffold\RequestsGeneratorCommand,
             'infyom.scaffold.views' instanceof \InfyOm\Generator\Commands\Scaffold\ViewsGeneratorCommand,
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
+            'iseed' instanceof \Orangehill\Iseed\Iseed,
+            'command.iseed' instanceof \Orangehill\Iseed\IseedCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -343,6 +347,8 @@ namespace PHPSTORM_META {
             'infyom.scaffold.requests' instanceof \InfyOm\Generator\Commands\Scaffold\RequestsGeneratorCommand,
             'infyom.scaffold.views' instanceof \InfyOm\Generator\Commands\Scaffold\ViewsGeneratorCommand,
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
+            'iseed' instanceof \Orangehill\Iseed\Iseed,
+            'command.iseed' instanceof \Orangehill\Iseed\IseedCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -485,6 +491,8 @@ namespace PHPSTORM_META {
             'infyom.scaffold.requests' instanceof \InfyOm\Generator\Commands\Scaffold\RequestsGeneratorCommand,
             'infyom.scaffold.views' instanceof \InfyOm\Generator\Commands\Scaffold\ViewsGeneratorCommand,
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
+            'iseed' instanceof \Orangehill\Iseed\Iseed,
+            'command.iseed' instanceof \Orangehill\Iseed\IseedCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
