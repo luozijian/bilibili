@@ -114,47 +114,22 @@
                 return '';
             }
 
-            //弹幕
-            let barrages = '{!! $barrages !!}';
-            barrages = JSON.parse(barrages);
-            for (let barrage of barrages){
-                $('body').barrager(barrage);
-            }
 
         });
 
         function store(){
             let content = $('[name="content"]').val();
             let user_id = '{{ Auth::id() }}';
-            $.ajax({
-                type: "POST",
-                url: "/api/barrages",
-                data: "content="+content+"&user_id="+user_id,
-                success: function(data){
-                    if (data.success){
-                        alert('发送成功');
-                        $('[name="content"]').val('');
-                        sendDanmu(data.data);
-                    }
-                },
-                error : function() {
-                    alert('字幕内容不能为空');
-                },
-            });
+            let data = {
+                content : content,
+                user_id : user_id,
+            };
+            data = JSON.stringify(data);
+            socket.send(data);
+
         }
 
-        function sendDanmu(data) {
-            const item={
-                img:data.user_avatar, //图片
-                info:data.content, //文字
-                href:'http://www.yaseng.org', //链接
-                close:true, //显示关闭按钮
-                speed:8, //延迟,单位秒,默认8
-                color:'#fff', //颜色,默认白色
-                old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
-            };
-            $('body').barrager(item);
-        }
+
 
 
 
@@ -170,16 +145,27 @@
                 socket = new WebSocket(host);
                 log('WebSocket - status '+socket.readyState);
                 socket.onopen    = function(msg){ log("Welcome - status "+this.readyState); };
-                socket.onmessage = function(msg){ alert("Received: "+msg.data); };
+                socket.onmessage = function(result){
+
+                    let res = JSON.parse(result.data);
+                    alert(res.msg);
+                    console.log(res);
+
+                    if (res.status){
+                        $('[name="content"]').val('');
+                        for (let barrage of res.data){
+                            $('body').barrager(barrage);
+                        }
+                    }
+
+                };
                 socket.onclose   = function(msg){ log("Disconnected - status "+this.readyState); };
             } catch(ex) {
                 log(ex);
             }
         }
 
-        function sendData(){
-            socket.send('123123');
-        }
+
 
     </script>
 @endsection
