@@ -62,6 +62,7 @@
                 </div>
             </div>
             <button onclick="SendData()">test</button>
+            <div id="log"></div>
         </div>
     </div>
 @endsection
@@ -158,31 +159,59 @@
 
 
         function SendData() {
-            var ws;
-            try {
-                ws = new WebSocket("ws://127.0.0.1:2000/echo");//连接服务器
-                ws.onopen = function(event){alert("已经与服务器建立了连接rn当前连接状态："+this.readyState);};
-                ws.onmessage = function(event){alert("接收到服务器发送的数据：rn"+event.data);};
-                ws.onclose = function(event){alert("已经与服务器断开连接rn当前连接状态："+this.readyState);};
-                ws.onerror = function(event){alert("WebSocket异常！");};
-            } catch (ex) {
-                alert(ex.message);
+            var host = "ws://localhost:2000/websocket/server.php";
+            try{
+                socket = new WebSocket(host);
+                log('WebSocket - status '+socket.readyState);
+                socket.onopen    = function(msg){ log("Welcome - status "+this.readyState); };
+                socket.onmessage = function(msg){ log("Received: "+msg.data); };
+                socket.onclose   = function(msg){ log("Disconnected - status "+this.readyState); };
+            } catch(ex) {
+                log(ex);
             }
             console.log('send!');
-            let user_id = '{{ Auth::id() }}';
+            {{--let user_id = '{{ Auth::id() }}';--}}
 
-            try{
+            {{--try{--}}
 
-                if(user_id){
-                    ws.send(user_id);
-                }
-            }   catch(ex){
-                alert(ex.message);
-            }
+                {{--if(user_id){--}}
+                    {{--ws.send(user_id);--}}
+                {{--}--}}
+            {{--}   catch(ex){--}}
+                {{--alert(ex.message);--}}
+            {{--}--}}
         }
 
         function seestate(){
             alert(ws.readyState);
+        }
+
+
+        /**
+         * send方法发送消息到服务器端
+         */
+        function send(){
+            var msg = $("msg").value;
+            if (!msg) return false;
+
+            $("msg").value="";
+            try{
+                socket.send(msg);
+                log('Sent: '+msg);
+            } catch(ex) {
+                log(ex);
+            }
+        }
+
+        //初始化的其他方法
+        function $(id) {
+            return document.getElementById(id);
+        }
+        function log(msg) {
+            $("log").innerHTML+="<br>"+msg;
+        }
+        function onkey(event){
+            if (event.keyCode == 13) send();
         }
 
     </script>

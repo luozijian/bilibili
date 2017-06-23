@@ -189,6 +189,7 @@ return [
         Orangehill\Iseed\IseedServiceProvider::class,
 
         Naux\Mail\SendCloudServiceProvider::class,
+        Laravoole\LaravooleServiceProvider::class,
 
     ],
 

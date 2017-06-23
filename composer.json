@@ -9,6 +9,7 @@
         "InfyOmLabs/laravel-generator": "dev-master",
         "barryvdh/laravel-debugbar": "^2.2",
         "doctrine/dbal": "^2.5",
+        "garveen/laravoole": "^0.5.1",
         "guzzlehttp/guzzle": "~6.0",
         "infyomlabs/flatlab-templates": "dev-master",
         "infyomlabs/swagger-generator": "dev-master",

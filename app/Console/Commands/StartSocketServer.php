@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Services\WebSocketService;
 use Illuminate\Console\Command;
+use Workerman\Worker;
+use App;
 
 class StartSocketServer extends Command
 {
@@ -12,7 +13,7 @@ class StartSocketServer extends Command
      *
      * @var string
      */
-    protected $signature = 'socket:start';
+    protected $signature = 'workerman:httpserver {action} {--daemonize}';
 
     /**
      * The console command description.
@@ -31,13 +32,24 @@ class StartSocketServer extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
-        new WebSocketService('127.0.0.1',2000);
+        //因为workerman需要带参数 所以得强制修改
+        global $argv;
+        $action=$this->argument('action');
+        if(!in_array($action,['start','stop'])){
+            $this->error('Error Arguments');
+            exit;
+        }
+        $argv[0]='workerman:httpserver';
+        $argv[1]=$action;
+        $argv[2]=$this->option('daemonize')?'-d':'';
+        $this->httpserver=new Worker('http://0.0.0.0:8080');
+        // App::instance('workerman:httpserver',$this->httpserver);
+        $this->httpserver->onMessage=function($connection,$data){
+            $connection->send('laravel workerman hello world');
+        };
+        Worker::runAll();
     }
+
 }
