@@ -140,7 +140,7 @@
 
         function initSocket() {
             //初始化socket
-            let host = "ws://bilibili.dev:4000";
+            let host = "ws://"+ '{!! env('SOCKET_HOST') !!}' +":4000";
             try{
                 socket = new WebSocket(host);
                 log('WebSocket - status '+socket.readyState);
