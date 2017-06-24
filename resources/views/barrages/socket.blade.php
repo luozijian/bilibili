@@ -137,7 +137,7 @@
 
         function initSocket() {
             //初始化socket
-            let host = "ws://"+ '{!! env('SOCKET_HOST') !!}' +":4000";
+            let host = "ws://"+ '{!! env('SOCKET_HOST') !!}' +":4000/websocket";
             try{
                 socket = new WebSocket(host);
                 log('WebSocket - status '+socket.readyState);

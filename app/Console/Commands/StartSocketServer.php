@@ -38,7 +38,7 @@ class StartSocketServer extends Command
     public function handle()
     {
 
-        $worker = new Worker("websocket://".env('SOCKET_HOST').":4000");
+        $worker = new Worker("websocket://".env('SOCKET_HOST').":4000/websocket");
 
 
         // 启动4个进程对外提供服务
