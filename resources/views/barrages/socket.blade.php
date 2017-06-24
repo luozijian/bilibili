@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="sendData()">test</button>
+            <button onclick="initSocket()">test</button>
             <div id="log"></div>
         </div>
     </div>
@@ -131,9 +131,6 @@
 
 
 
-
-
-        //初始化的其他方法
         function log(msg) {
             $("log").innerHTML+="<br>"+msg;
         }
