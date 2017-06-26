@@ -42,7 +42,7 @@ class StartSocketServer extends Command
 
 
         // 启动4个进程对外提供服务
-        $worker->count = 8;
+        $worker->count = 1;
 
 
         // 当收到客户端发来的数据后
