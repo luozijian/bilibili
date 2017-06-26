@@ -113,6 +113,12 @@
                 return '';
             }
 
+            //弹幕
+            let barrages = '{!! $barrages !!}';
+            barrages = JSON.parse(barrages);
+            for (let barrage of barrages){
+                $('body').barrager(barrage);
+            }
 
         });
 
@@ -135,7 +141,9 @@
             try{
                 socket = new WebSocket(host);
                 console.log('WebSocket - status '+socket.readyState);
-                socket.onopen    = function(msg){ console.log("Welcome - status "+this.readyState); };
+                socket.onopen    = function(result){
+                    console.log("Welcome - status "+this.readyState);
+                };
                 socket.onmessage = function(result){
 
                     let res = JSON.parse(result.data);
@@ -143,9 +151,7 @@
 
                     if (res.status){
                         $('[name="content"]').val('');
-                        for (let barrage of res.data){
-                            $('body').barrager(barrage);
-                        }
+                        $('body').barrager(res.data);
                     }
 
                 };

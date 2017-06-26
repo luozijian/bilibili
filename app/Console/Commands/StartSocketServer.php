@@ -54,29 +54,24 @@ class StartSocketServer extends Command
             if ($data['content'] === '') {
                 $connection->send(json_encode(array('status' => false, 'msg' => '内容不能为空')));
             } else {
-                Barrage::create($data);
-                $all = Barrage::all();
-                $barrages = [];
-                foreach ($all as $key => $item) {
-                    $barrages[$key]['img'] = $item->user->avatar;
-                    $barrages[$key]['info'] = $item->content;
-                    $barrages[$key]['href'] = 'http://www.yaseng.org';
-                    $barrages[$key]['speed'] = random_int(5, 8);
-                    $barrages[$key]['color'] = '#fff';
-                    $barrages[$key]['old_ie_color'] = '#000000';
-                }
-                $barrages = json_encode(array('status' => true, 'msg' => '发送成功','data'=>$barrages));
-                foreach ($worker->connections as $connection) {
-                    $connection->send($barrages);
-                }
+                $barrage = Barrage::create($data);
+                $barrage['img'] = $barrage->user->avatar;
+                $barrage['info'] = $barrage->content;
+                $barrage['href'] = 'http://www.yaseng.org';
+                $barrage['speed'] = random_int(5, 8);
+                $barrage['color'] = '#fff';
+                $barrage['old_ie_color'] = '#000000';
 
+                $result = json_encode(array('status' => true, 'msg' => '发送成功','data'=>$barrage));
+                foreach ($worker->connections as $connection) {
+                    $connection->send($result);
+                }
             };
 
-            // 运行worker
-
         };
-            Worker::runAll();
+        // 运行worker
 
+        Worker::runAll();
 
     }
 }
