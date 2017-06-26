@@ -61,8 +61,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="initSocket()">test</button>
-            <div id="log"></div>
+
         </div>
     </div>
 @endsection
@@ -130,22 +129,16 @@
         }
 
 
-
-        function log(msg) {
-            $("log").innerHTML+="<br>"+msg;
-        }
-
         function initSocket() {
             //初始化socket
             let host = "ws://"+ '{!! env('SOCKET_HOST') !!}' +":4000/websocket";
             try{
                 socket = new WebSocket(host);
-                log('WebSocket - status '+socket.readyState);
-                socket.onopen    = function(msg){ log("Welcome - status "+this.readyState); };
+                console.log('WebSocket - status '+socket.readyState);
+                socket.onopen    = function(msg){ console.log("Welcome - status "+this.readyState); };
                 socket.onmessage = function(result){
 
                     let res = JSON.parse(result.data);
-                    alert(res.msg);
                     console.log(res);
 
                     if (res.status){
@@ -156,9 +149,9 @@
                     }
 
                 };
-                socket.onclose   = function(msg){ log("Disconnected - status "+this.readyState); };
+                socket.onclose   = function(msg){ console.log("Disconnected - status "+this.readyState); };
             } catch(ex) {
-                log(ex);
+                console.log(ex);
             }
         }
 
